@@ -17,6 +17,6 @@ class NegativeMinuteException extends Exception {
 @SuppressWarnings("serial")
 class NegativeSecondException extends Exception {
 	public String toString() {
-		return "Los segundos no e";
+		return "Los segundos no existen";
 	}
 }
