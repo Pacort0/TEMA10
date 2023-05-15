@@ -47,8 +47,8 @@ public class Fecha {
 	 * 
 	 * @param dia Valor que le vamos a asignar a 'dia'
 	 */
-	public void setDia(int dia) throws NegativeDayException{
-		if (dia > 0 && dia <=31 && fechaCorrecta()) {
+	public void setDia(int dia) throws NegativeDayException {
+		if (dia > 0 && dia <= 31 && fechaCorrecta()) {
 			this.dia = dia;
 		} else {
 			throw new NegativeDayException();
@@ -70,8 +70,8 @@ public class Fecha {
 	 * 
 	 * @param mes El valor que le queremos asignar a 'mes'
 	 */
-	public void setMes(int mes) throws NegativeMonthException{
-		if (fechaCorrecta() && mes > 0 && mes <=12) {
+	public void setMes(int mes) throws NegativeMonthException {
+		if (fechaCorrecta() && mes > 0 && mes <= 12) {
 			this.mes = mes;
 		} else {
 			throw new NegativeMonthException();
@@ -93,7 +93,7 @@ public class Fecha {
 	 * 
 	 * @param anio Valor que le queremos asignar a 'anio'
 	 */
-	public void setAnio(int anio) throws NegativeYearException{
+	public void setAnio(int anio) throws NegativeYearException {
 		if (fechaCorrecta()) {
 			this.anio = anio;
 		} else {
@@ -108,7 +108,7 @@ public class Fecha {
 	 */
 	public boolean esBisiesto() {
 		boolean bisiesto = false;
-		if (getAnio() % 4 == 0 || (getAnio() % 100 == 0 && getAnio() % 400 == 0)) { // Si además es divisible entre 100
+		if (anio % 4 == 0 || (anio % 100 == 0 && anio % 400 == 0)) { // Si además es divisible entre 100
 			bisiesto = true; // Si es divisible entre 100 y 400 es bisiesto
 		}
 
@@ -123,30 +123,30 @@ public class Fecha {
 	public boolean fechaCorrecta() {
 		boolean correcta = false;
 
-		if (getDia() > 0 && getDia() <= 31) { // Primero comprobamos si el día introducido es potencialmente correcto
-			if (getMes() == 2 && getDia() <= 28 && !esBisiesto()) { // Luego comprobamos que, en caso de ser febrero, el
-																	// rango no supera 28
+		if (dia > 0 && dia <= 31) { // Primero comprobamos si el día introducido es potencialmente correcto
+			if (mes == 2 && dia <= 28 && !esBisiesto()) { // Luego comprobamos que, en caso de ser febrero, el
+															// rango no supera 28
 				correcta = true;
-			} else if (getMes() == 2 && getDia() <= 29 && esBisiesto()) { // Si el día es mayor que 28, comprobamos si
-																			// el año es bisiesto (en caso de que sea 29
-																			// de febrero)
+			} else if (mes == 2 && dia <= 29 && esBisiesto()) { // Si el día es mayor que 28, comprobamos si
+																// el año es bisiesto (en caso de que sea 29
+																// de febrero)
 				correcta = true;
-			} else if ((mesDe31()) && getDia() <= 31) { // Si no es febrero, comprobamos si es un mes de 31 días y el
-														// rango es correcto
+			} else if ((mesDe31()) && mes <= 31) { // Si no es febrero, comprobamos si es un mes de 31 días y el
+													// rango es correcto
 				correcta = true;
-			} else if (getMes() != 2 && getDia() <= 30) { // Si no es un mes de 31 días, comprobamos que el rango sea
-															// correcto para el resto de meses
+			} else if (mes != 2 && dia <= 30) { // Si no es un mes de 31 días, comprobamos que el rango sea
+												// correcto para el resto de meses
 				correcta = true;
 			}
 		}
 
 		// Comprobamos que el mes sea correcto
-		if (getMes() <= 0 || getMes() > 12) {
+		if (mes <= 0 || mes > 12) {
 			correcta = false;
 		}
 
 		// Comprobamos que el año sea positivo
-		if (getAnio() < 0) {
+		if (anio < 0) {
 			correcta = false;
 		}
 
@@ -192,8 +192,7 @@ public class Fecha {
 	public boolean mesDe31() {
 		boolean mesLargo = false;
 
-		if (getMes() == 1 || getMes() == 3 || getMes() == 5 || getMes() == 7 || getMes() == 8 || getMes() == 10
-				|| getMes() == 12) {
+		if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
 			mesLargo = true;
 		}
 
@@ -205,18 +204,24 @@ public class Fecha {
 	 * dígito
 	 */
 	public String toString() {
-		String formato = "";
+		String result = "";
 
 		if (this.dia < 10) {
-			formato = "0" + dia + "-" + mes + "-" + anio;
-		} else if (this.mes < 10) {
-			formato = dia + "-0" + mes + "-" + anio;
-		}
-		if (this.mes < 10 && this.dia < 10) {
-			formato = "0" + dia + "-0" + mes + "-" + anio;
+
+			result += "0" + dia + " - ";
+		} else {
+			result += dia + " - ";
 		}
 
-		return formato;
+		if (this.mes < 10) {
+			result += "0" + mes + " - ";
+		} else {
+			result += mes + " - ";
+		}
+
+		result += anio;
+
+		return result;
 	}
 
 }
