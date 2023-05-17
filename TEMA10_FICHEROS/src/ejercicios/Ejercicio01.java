@@ -13,8 +13,8 @@ public class Ejercicio01 {
 		try {
 			Scanner sc = new Scanner(new FileReader("NumerosReales"));
 			
-			while(sc.hasNextInt()) {
-				suma += sc.nextInt();
+			while(sc.hasNextDouble()) {
+				suma += sc.nextDouble();
 				contador++;
 			}
 			
