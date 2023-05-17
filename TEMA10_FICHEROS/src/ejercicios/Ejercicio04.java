@@ -11,6 +11,8 @@ public class Ejercicio04 {
 			BufferedWriter bw = new BufferedWriter(new FileWriter("escribir-ej4"));
 			BufferedReader br = new BufferedReader(new FileReader("escribir-ej4"));
 			
+			
+			
 			while(!cadena.equalsIgnoreCase("fin")) {
 				bw.write(cadena);
 			}
