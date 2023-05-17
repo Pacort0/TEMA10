@@ -9,11 +9,9 @@ public class Ejercicio04 {
 		String cadena = "";
 		
 		BufferedWriter bw = null;
-		BufferedReader br = null;
 		
 		try {
 			bw = new BufferedWriter(new FileWriter("escribir-ej4"));
-			br = new BufferedReader(new FileReader("escribir-ej4"));
 			Scanner sc = new Scanner(System.in);
 			
 			System.out.println("Introduzca unas líneas de texto: ");
@@ -22,7 +20,6 @@ public class Ejercicio04 {
 			bw.write(cadena);
 			
 			while(!cadena.equalsIgnoreCase("fin")) {
-				cadena = br.readLine();
 				
 				bw.newLine();
 				
@@ -30,7 +27,6 @@ public class Ejercicio04 {
 				
 				bw.write(cadena);
 			}
-			br.close();
 			sc.close();
 		} catch (IOException e) {
 			System.err.println("Error");
