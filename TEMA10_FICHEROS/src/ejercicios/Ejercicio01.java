@@ -11,10 +11,10 @@ public class Ejercicio01 {
 		int contador = 0;
 		
 		try {
-			Scanner sc = new Scanner(new FileReader("..\\..\\ficheros\\NumerosReales.txt"));
+			Scanner sc = new Scanner(new FileReader("NumerosReales"));
 			
 			while(sc.hasNextInt()) {
-				suma += sc.nextDouble();
+				suma += sc.nextInt();
 				contador++;
 			}
 			

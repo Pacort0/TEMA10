@@ -1,7 +1,6 @@
 package ejercicios;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Scanner;
 
 public class Ejercicio02 {
@@ -12,9 +11,9 @@ public class Ejercicio02 {
 		int contador = 0;
 		
 		try {
-			Scanner sc = new Scanner(new FileReader("..\\..\\ficheros\\Enteros.txt"));
+			Scanner sc = new Scanner(new FileReader("Enteros"));
 			
-			while(sc.hasNextInt()) {
+			while(sc.hasNextDouble()) {
 				suma += sc.nextDouble();
 				contador++;
 			}
