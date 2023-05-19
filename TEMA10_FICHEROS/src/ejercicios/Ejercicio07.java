@@ -12,33 +12,32 @@ public class Ejercicio07 {
 		int opcion = 0;
 		String nombre;
 		long tlfn;
-		BufferedWriter bw;
+		BufferedWriter bw = null;
 		String cadena;
 		String[] separado = new String[0];
-		
+
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("agenda.txt"));
-			
+
 			cadena = br.readLine();
-			
-			while(cadena != null) {
-				
+
+			while (cadena != null) {
+
 				separado = cadena.split(" --> ");
-				
+
 				agenda.put(separado[0], Long.parseLong(separado[1]));
-				
+
 				cadena = br.readLine();
 			}
-			
+
 			br.close();
-			
+
 		} catch (FileNotFoundException e1) {
 			System.err.println("Fichero no encontrado");
 		} catch (IOException e) {
 			System.err.println("Error de entrada/salida");
 		}
-		
-		
+
 		do {
 			menu();
 			opcion = SC.nextInt();
@@ -61,8 +60,8 @@ public class Ejercicio07 {
 			case 2:
 				System.out.println("Introduzca el nombre del contacto a buscar: ");
 				nombre = SC.nextLine();
-				
-				if(buscaContacto(nombre)) {
+
+				if (buscaContacto(nombre)) {
 					System.out.println("Teléfono: " + agenda.get(nombre));
 				} else {
 					System.err.println("El contacto no existe");
@@ -78,12 +77,17 @@ public class Ejercicio07 {
 			case 4:
 				try {
 					bw = new BufferedWriter(new FileWriter("agenda.txt"));
-					
+
 					escribe(bw);
-					
-					bw.close();
 				} catch (IOException e) {
 					System.err.println("Error de entrada/salida");
+				} finally {
+					try {
+						bw.flush();
+						bw.close();
+					} catch (IOException e) {
+						System.err.println("Error de entrada/salida");
+					}
 				}
 			}
 		} while (opcion != 5);
@@ -108,24 +112,20 @@ public class Ejercicio07 {
 	public static boolean buscaContacto(String nombre) {
 		boolean existe = false;
 
-		if(agenda.containsKey(nombre)) {
+		if (agenda.containsKey(nombre)) {
 			existe = true;
 		}
 
 		return existe;
 	}
-	
-	public static void escribe(BufferedWriter bw) {
+
+	public static void escribe(BufferedWriter bw) throws IOException {
 		String cadena;
-		
-		for(String llave : agenda.keySet()) {
+
+		for (String llave : agenda.keySet()) {
 			cadena = llave + " --> " + agenda.get(llave);
-			try {
-				bw.write(cadena);
-				bw.newLine();
-			} catch (IOException e) {
-				System.err.println("Error de entrada/salida");
-			}
+			bw.write(cadena);
+			bw.newLine();
 		}
 	}
 
