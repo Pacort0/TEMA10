@@ -33,7 +33,7 @@ public class Ejercicio04 {
 			System.out.println(e.getMessage());
 		} finally { //Bloque de instrucciones que DEBE ejecutarse
 			try {
-				bw.flush(); //Hacemos flush y cerramos el Writers
+				bw.flush(); //Hacemos flush y cerramos el WriterS
 				bw.close();
 			} catch (IOException e) { //Cazamos la excepción
 				System.err.println("Error"); 
