@@ -51,7 +51,7 @@ public class Fecha {
 		if (dia > 0 && dia <= 31 && fechaCorrecta()) {
 			this.dia = dia;
 		} else {
-			throw new NegativeDayException();
+			throw new NegativeDayException(); //Si el día no pertenece al rango, lanza la excepción
 		}
 	}
 
@@ -74,7 +74,7 @@ public class Fecha {
 		if (fechaCorrecta() && mes > 0 && mes <= 12) {
 			this.mes = mes;
 		} else {
-			throw new NegativeMonthException();
+			throw new NegativeMonthException(); //Si el mes no pertenece al rango, lanza la excepción
 		}
 	}
 
@@ -97,7 +97,7 @@ public class Fecha {
 		if (fechaCorrecta()) {
 			this.anio = anio;
 		} else {
-			throw new NegativeYearException();
+			throw new NegativeYearException(); //Si el año no es correcto, lanza un mensaje de error
 		}
 	}
 

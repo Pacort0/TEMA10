@@ -17,21 +17,21 @@ public class Main03 {
 		System.out.println("Introduzca el día: ");
 		try {
 			fecha.setDia(sc.nextInt());
-		} catch (NegativeDayException nD) {
+		} catch (NegativeDayException nD) { //Cazamos el error en caso de que el día sea incorrecto y mostramos un mensaje de error
 			System.err.println(nD.toString());
 		}
 		
 		System.out.println("Introduzca el mes: ");
 		try {
 			fecha.setMes(sc.nextInt());
-		} catch (NegativeMonthException nM) {
+		} catch (NegativeMonthException nM) { //Lanzamos el error en caso de que el mes sea incorrecto y mostramos un mensaje de error
 			System.err.println(nM.toString());
 		}
 		
 		System.out.println("Introduzca el año: ");
 		try {
 			fecha.setAnio(sc.nextInt());
-		} catch (NegativeYearException nY) {
+		} catch (NegativeYearException nY) { //Lanzamos el error en caso de que el año sea incorrecto y mostramos un mensaje de error
 			System.err.println(nY.toString());
 		}
 		

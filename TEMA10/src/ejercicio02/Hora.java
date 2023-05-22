@@ -48,7 +48,7 @@ public class Hora {
 	 */
 	public void setHora(int hora) throws NegativeHourException {
 		if (hora < 0 || hora > 23) {
-			throw new NegativeHourException();
+			throw new NegativeHourException(); //Si la hora no es correcta, lanza una excepción
 		} else {
 			this.hora = hora;
 		}
@@ -73,7 +73,7 @@ public class Hora {
 		if (minuto >= 0 && minuto <= 59) {
 			this.minuto = minuto;
 		} else {
-			throw new NegativeMinuteException();
+			throw new NegativeMinuteException(); //Si los minutos no son correctos, lanza una excepción
 		}
 	}
 
@@ -95,7 +95,7 @@ public class Hora {
 		if (segundos >= 0 && segundos <= 59) {
 			this.segundos = segundos;
 		} else {
-			throw new NegativeSecondException();
+			throw new NegativeSecondException(); //Si los segundos no son correctos, lanza una excepción
 		}
 	}
 
@@ -109,15 +109,15 @@ public class Hora {
 		for (int i = 1; i <= incremento; i++) {
 
 			segundos++;
-			if (getSegundos() > 59) {
+			if (this.segundos > 59) {
 				minuto++;
 				segundos = 0;
 			}
-			if (getMinuto() > 59) {
+			if (this.minuto > 59) {
 				hora++;
 				minuto = 0;
 			}
-			if (getHora() > 23) {
+			if (this.hora > 23) {
 				hora = 0;
 			}
 		}
