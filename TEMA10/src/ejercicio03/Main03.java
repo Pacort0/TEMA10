@@ -10,9 +10,9 @@ import java.util.Scanner;
 public class Main03 {
 
 	public static void main(String[] args) {
-		Fecha fecha = new Fecha();
+		Fecha fecha = new Fecha(); //Objeto de tipo Fecha
 		
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in); //Escáner del programa
 		
 		System.out.println("Introduzca el día: ");
 		try {
