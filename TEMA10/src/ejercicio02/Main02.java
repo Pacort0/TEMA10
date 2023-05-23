@@ -14,19 +14,20 @@ public class Main02 {
 		System.out.println("Introduzca la hora que es: ");
 		try {
 			primera.setHora(sc.nextInt());
-		} catch (NegativeHourException e) {
+		} catch (NegativeHourException e) { // Cazamos un posible error en la introducción de la hora y mostramos un
+											// mensaje de error
 			System.err.println(e.toString());
 		}
 		System.out.println("Introduzca los minutos: ");
 		try {
 			primera.setMinuto(sc.nextInt());
-		} catch (NegativeMinuteException e) {
+		} catch (NegativeMinuteException e) { //Cazamos un posible error en la introducción de los minutos y mostramos un mensaje de error
 			System.err.println(e.toString());
 		}
 		System.out.println("Introduzca los segundos: ");
 		try {
 			primera.setSegundos(sc.nextInt());
-		} catch (NegativeSecondException e) {
+		} catch (NegativeSecondException e) { //Cazamos un posible error en la introducción de los segundos y mostramos un mensaje de error
 			System.err.println(e.toString());
 		}
 
