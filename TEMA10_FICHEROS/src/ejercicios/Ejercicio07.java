@@ -94,13 +94,23 @@ public class Ejercicio07 {
 					}
 				}
 				break;
-			case 5: // Si la opción es 5
+			case 5:
+				System.out.println("Introduzca el nombre del contacto a buscar: ");
+				nombre = SC.nextLine(); // Pedimos y guardamos el nombre del contacto a buscar
+
+				if (buscaContacto(nombre)) { // Si el contacto existe:
+					agenda.remove(nombre); // Eliminamos el contacto
+				} else { // Si no existe, mostramos un mensaje de error
+					System.err.println("El contacto no existe");
+				}
+				break;
+			case 6: // Si la opción es 5
 				System.out.println("Hasta luego"); // Nos despedimos del usuario
 				break;
 			default: // Si no es ninguna de las opciones anteriores
 				System.err.println("Esa opción no está contemplada"); // Mostramos un mensaje de error
 			}
-		} while (opcion != 5); // El bucle do-while se repetirá mientras la opción sea diferente de 5
+		} while (opcion != 6); // El bucle do-while se repetirá mientras la opción sea diferente de 5
 	}
 
 	/**
@@ -108,7 +118,7 @@ public class Ejercicio07 {
 	 */
 	public static void menu() {
 		System.out.println("Introduzca una opción: " + "\n1. Añadir contacto" + "\n2. Buscar contacto"
-				+ "\n3. Mostrar agenda" + "\n4. Guardar datos en la agenda" + "\n5. Salir");
+				+ "\n3. Mostrar agenda" + "\n4. Guardar datos en la agenda" + "\n5. Borrar contacto" + "\n6. Salir");
 
 	}
 
@@ -159,5 +169,4 @@ public class Ejercicio07 {
 			bw.newLine();
 		}
 	}
-
 }
