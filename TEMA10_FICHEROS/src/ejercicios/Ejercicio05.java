@@ -15,6 +15,7 @@ public class Ejercicio05 {
 
 		String ruta = new File("datos.txt").getAbsolutePath(); // Guardamos en 'ruta' la ruta del fichero que indicamos
 																// entre paréntesis
+		System.out.println(ruta);
 
 		try {
 			File fichero = new File(ruta); // Creamos un objeto File con la ruta que hemos guardado antes
